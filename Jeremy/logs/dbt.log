@@ -1,0 +1,58 @@
+[0m15:01:39.018628 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002DFACD5AAB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002DFA9834350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002DFAD1252B0>]}
+
+
+============================== 15:01:39.037947 | 0b38845a-65fc-439f-a356-0e49bdae9394 ==============================
+[0m15:01:39.037947 [info ] [MainThread]: Running with dbt=1.8.7
+[0m15:01:39.039379 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\dupre\\.dbt', 'debug': 'False', 'version_check': 'True', 'log_path': 'logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt init nutriscan_dbt', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m15:01:39.059673 [warn ] [MainThread]: [ConfigFolderDirectory]: Unable to parse logging event dictionary. Failed to parse dir field: expected string or bytes-like object, got 'WindowsPath'.. Dictionary: {'dir': WindowsPath('C:/Users/dupre/.dbt')}
+[0m15:01:39.059673 [info ] [MainThread]: Creating dbt configuration folder at 
+[0m15:01:39.061673 [debug] [MainThread]: Starter project path: C:\data\nutriScan\venv\Lib\site-packages\dbt\include\starter_project
+[0m15:01:39.080874 [info ] [MainThread]: 
+Your new dbt project "nutriscan_dbt" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m15:01:39.081883 [info ] [MainThread]: Setting up your profile.
+[0m15:02:46.784834 [info ] [MainThread]: Profile nutriscan_dbt written to C:\Users\dupre\.dbt\profiles.yml using target's sample configuration. Once updated, you'll be able to start developing with dbt.
+[0m15:02:46.786235 [debug] [MainThread]: Command `dbt init` succeeded at 15:02:46.784834 after 67.88 seconds
+[0m15:02:46.786235 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002DFAD168B00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002DFACD5AAB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002DFAC8CCB30>]}
+[0m15:02:46.786235 [debug] [MainThread]: Flushing usage events
+[0m14:00:20.611181 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002769AB93770>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002769A7B69F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027696C662D0>]}
+
+
+============================== 14:00:20.616790 | 7716706e-83ac-48a0-abd5-cbc3236e9fe9 ==============================
+[0m14:00:20.616790 [info ] [MainThread]: Running with dbt=1.8.7
+[0m14:00:20.616790 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'debug': 'False', 'log_path': 'logs', 'profiles_dir': 'C:\\Users\\dupre\\.dbt', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run --select marts', 'introspect': 'True', 'log_format': 'default', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m14:00:20.617952 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\data\nutriScan\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m14:00:20.617952 [debug] [MainThread]: Command `dbt run` failed at 14:00:20.617952 after 0.13 seconds
+[0m14:00:20.619166 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002769AC4F170>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027699C420C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002769A2B53D0>]}
+[0m14:00:20.619166 [debug] [MainThread]: Flushing usage events
+[0m14:27:00.041573 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001716CDED7F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001716F77AC30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001716F0136E0>]}
+
+
+============================== 14:27:00.046518 | 41ddc1d6-a2f7-4d14-b276-c1e3237ee7b7 ==============================
+[0m14:27:00.046518 [info ] [MainThread]: Running with dbt=1.8.7
+[0m14:27:00.047580 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': 'logs', 'debug': 'False', 'profiles_dir': 'C:\\Users\\dupre\\.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt run --select marts', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m14:27:00.048577 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\data\nutriScan\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m14:27:00.049579 [debug] [MainThread]: Command `dbt run` failed at 14:27:00.049579 after 0.19 seconds
+[0m14:27:00.049579 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001716FBD4E30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001716C1A4770>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001716CDED7F0>]}
+[0m14:27:00.049579 [debug] [MainThread]: Flushing usage events

@@ -1,0 +1,86 @@
+version: 2
+
+models:
+  - name: dim_product
+    description: 'Dimension produit du schéma en étoile NutriScan. Contient les attributs descriptifs.'
+    columns:
+      - name: product_sk
+        data_tests:
+          - unique
+          - not_null
+      - name: product_code
+        data_tests:
+          - not_null
+      - name: nutriscore_grade
+        data_tests:
+          - accepted_values:
+              values: ['a', 'b', 'c', 'd', 'e']
+        config:
+          where: 'nutriscore_grade IS NOT NULL'
+
+  - name: dim_category
+    description: 'Dimension de classification des produits (Catégories Open Food Facts).'
+    columns:
+      - name: category_sk
+        data_tests:
+          - unique
+          - not_null
+      - name: category_tag
+        data_tests:
+          - not_null
+
+  - name: dim_brand
+    description: 'Dimension des marques et fabricants.'
+    columns:
+      - name: brand_sk
+        data_tests:
+          - unique
+          - not_null
+      - name: brand_tag
+        data_tests:
+          - not_null
+
+  - name: dim_country
+    description: 'Dimension géographique des pays de commercialisation.'
+    columns:
+      - name: country_sk
+        data_tests:
+          - unique
+          - not_null
+      - name: country_tag
+        data_tests:
+          - not_null
+
+  - name: dim_date
+    description: 'Dimension temporelle basée sur la date de dernière modification des fiches.'
+    columns:
+      - name: date_sk
+        data_tests:
+          - unique
+          - not_null
+      - name: date_value
+        data_tests:
+          - not_null
+
+  - name: fact_nutrition
+    description: 'Table de faits principale au grain (1 Produit x 1 Pays). Contient toutes les mesures nutritionnelles pour 100g.'
+    columns:
+      - name: nutrition_sk
+        data_tests:
+          - unique
+          - not_null
+      - name: product_sk
+        data_tests:
+          - not_null
+      - name: category_sk
+        data_tests:
+          - not_null
+      - name: brand_sk
+        data_tests:
+          - not_null
+      - name: country_sk
+        data_tests:
+          - not_null
+      - name: date_sk
+        data_tests:
+          - not_null

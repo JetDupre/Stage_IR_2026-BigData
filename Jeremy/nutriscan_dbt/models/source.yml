@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+     - name: nutriscan
+       meta:
+         external_location: "read_parquet('C:/data/nutriScan/sources/food.parquet')"
+       tables:
+         - name: food
+           description: 'Fichier brut Open Food Facts - 4,5 millions de produits alimentaires'
+           columns:
+             - name: code
+               description: 'Code EAN-13 du produit'
+             - name: nutriscore_grade
+               description: 'Grade Nutri-Score : a/b/c/d/e'
+             - name: last_modified_t
+               description: 'Timestamp Unix en SECONDES depuis le 01/01/1970'
