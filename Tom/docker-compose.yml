@@ -1,0 +1,139 @@
+services:
+  minio:
+    image: minio/minio:RELEASE.2024-01-16T16-07-38Z
+    container_name: minio
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    volumes:
+      - minio-data:/data
+    command: server /data --console-address ':9001'
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:9000/minio/health/live']
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    networks:
+      - bigdata-network
+
+  mariadb:
+    image: mariadb:10.6
+    container_name: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_USER: hive
+      MYSQL_PASSWORD: hive
+      MYSQL_DATABASE: metastore_db
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    healthcheck:
+      test: ['CMD', 'healthcheck.sh', '--connect', '--innodb_initialized']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - bigdata-network
+
+  hive-metastore:
+    image: apache/hive:3.1.3
+    container_name: hive-metastore
+    ports:
+      - '9083:9083'
+    environment:
+      SERVICE_NAME: metastore
+      DB_DRIVER: mysql
+      IS_RESUME: "true"
+      SERVICE_OPTS: >-
+        -Djavax.jdo.option.ConnectionDriverName=com.mysql.cj.jdbc.Driver
+        -Djavax.jdo.option.ConnectionURL=jdbc:mysql://mariadb:3306/metastore_db?useSSL=false&allowPublicKeyRetrieval=true
+        -Djavax.jdo.option.ConnectionUserName=hive
+        -Djavax.jdo.option.ConnectionPassword=hive
+      HIVE_AUX_JARS_PATH: /opt/hadoop/share/hadoop/tools/lib
+    volumes:
+      - ./config/hive/drivers/mysql-connector-j-9.7.0.jar:/opt/hive/lib/mysql-connector-j-9.7.0.jar
+      - ./config/hive/drivers:/opt/hadoop/share/hadoop/tools/lib
+      - ./config/hive/core-site.xml:/opt/hadoop/etc/hadoop/core-site.xml
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    networks:
+      - bigdata-network
+
+  trino:
+    image: trinodb/trino:435
+    container_name: trino
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./config/trino:/etc/trino
+    depends_on:
+      hive-metastore:
+        condition: service_started
+    networks:
+      - bigdata-network
+
+  airflow:
+    #image: apache/airflow:2.8.1
+    image: nutriscan-airflow:latest
+    container_name: airflow
+    ports:
+      - '8081:8080'
+    environment:
+      AIRFLOW__CORE__EXECUTOR: SequentialExecutor
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      _AIRFLOW_DB_MIGRATE: 'true'
+      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_WWW_USER_USERNAME: admin
+      _AIRFLOW_WWW_USER_PASSWORD: admin
+      PYTHONPATH: /opt/airflow
+      MINIO_ENDPOINT: http://minio:9000
+    volumes:
+      - ./transform/dags:/opt/airflow/dags
+      
+      - ./transform:/opt/airflow/transform
+      - airflow-data:/opt/airflow
+
+    command: standalone
+    networks:
+      - bigdata-network
+
+  superset:
+    image: apache/superset:3.1.0
+    container_name: superset
+    ports:
+      - '8088:8088'
+    environment:
+      SUPERSET_SECRET_KEY: nutriscan-secret-key-2026
+    depends_on:
+      - trino
+    volumes:
+      - superset-data:/app/superset_home
+    networks:
+      - bigdata-network
+
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - bigdata-network
+
+volumes:
+  minio-data:
+  mariadb-data:
+  airflow-data:
+  mongodb-data:
+  superset-data:
+
+networks:
+  bigdata-network:
+    driver: bridge

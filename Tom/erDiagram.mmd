@@ -1,0 +1,63 @@
+erDiagram
+
+    FACT_NUTRITION {
+        int product_sk FK
+        int brand_sk FK
+        int category_sk FK
+        int country_sk FK
+        int date_sk FK
+
+        double energy_kcal
+        double fat_g
+        double sugars_g
+        double salt_g
+        double proteins_g
+        double fiber_g
+        double saturated_fat_g
+
+        double nutriscore_score
+    }
+
+    DIM_PRODUCT {
+        int product_sk PK
+        varchar code_ean
+        varchar product_name
+        varchar nutriscore_grade
+        varchar environmental_score_grade
+        varchar quantity
+        int nova_group
+    }
+
+    DIM_BRAND {
+        int brand_sk PK
+        varchar brand_name
+        varchar brand_tag
+    }
+
+    DIM_CATEGORY {
+        int category_sk PK
+        varchar category_name
+        varchar category_tag
+    }
+
+    DIM_COUNTRY {
+        int country_sk PK
+        varchar country_name
+        varchar country_tag
+    }
+
+    DIM_DATE {
+        int date_sk PK
+        date full_date
+        int year
+        int quarter
+        int month
+        int day
+        boolean is_weekend
+    }
+
+    FACT_NUTRITION }o--|| DIM_PRODUCT : "stocke"
+    FACT_NUTRITION }o--|| DIM_BRAND : "represente"
+    FACT_NUTRITION }o--|| DIM_CATEGORY : "contient"
+    FACT_NUTRITION }o--|| DIM_COUNTRY : "utilise"
+    FACT_NUTRITION }o--|| DIM_DATE : "associe"
