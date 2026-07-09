@@ -1,0 +1,21 @@
+{
+  "authenticationDatabaseName": "",
+  "journaled": true,
+  "appName": "",
+  "dbName": "nutriscan",
+  "authenticationUser": "",
+  "connectTimeoutMs": "",
+  "writeConcern": "",
+  "authenticationPassword": "Encrypted ",
+  "connectionType": "STANDARD",
+  "usingAllReplicaSetMembers": false,
+  "usingSslSocketFactory": false,
+  "replicationTimeoutMs": "",
+  "hostname": "localhost",
+  "port": "27017",
+  "name": "MongoDB_local",
+  "readPreference": "PRIMARY",
+  "socketTimeoutMs": "",
+  "readPrefTagSets": "",
+  "authenticationMechanism": "SCRAM_SHA_256"
+}
