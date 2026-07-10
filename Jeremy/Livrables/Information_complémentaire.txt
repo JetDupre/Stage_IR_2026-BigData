@@ -1,0 +1,16 @@
+La date exacte à laquelle j'ai téléchargé le fichier food.parquet : 8 Juin 2026
+
+URL :
+https://huggingface.co/datasets/openfoodfacts/product-database/resolve/main/food.parquet?download=true
+
+Machine :
+- version de Windows :
+Microsoft Windows 11 Famille
+Version 10.0.26200 Build 26200
+
+- type de disque :
+SSD (NVMe)
+
+- RAM et CPU :
+RAM : 16 Go
+CPU : AMD Ryzen 7 5800U 
