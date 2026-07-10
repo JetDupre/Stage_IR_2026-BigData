@@ -1,0 +1,16 @@
+Specs :
+
+Processeur :	12th Gen Intel(R) Core(TM) i7-1255U, 1700 MHz, 10 cœur(s), 12 processeur(s) logique(s)
+Nom du système d’exploitation :	Microsoft Windows 11 Famille
+Version :	10.0.26200 Build 26200
+
+Mémoire physique (RAM) installée :40,0 Go
+
+Stockage :  KBG5AZNT512G LA KIOXIA
+Capacité :	477 Go
+Type : SSD NVME
+
+
+
+Openfoodfacts téléchargé le 08/06/2026 a 14h02 taille : 7363728 Ko
+Via le lien suivant : https://huggingface.co/datasets/openfoodfacts/product-database/resolve/main/food.parquet?download=true 
